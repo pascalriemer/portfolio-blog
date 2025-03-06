@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light mode - green color scheme */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 75 22% 31%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 82 13% 42%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Dark mode - black and white */
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 0%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 0%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 85%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 0 0% 15%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 0 0% 80%;
+}
+
+* {
+  @apply transition-colors duration-300;
+}
+
+body {
+  @apply bg-quaternary dark:bg-black text-primary dark:text-white;
+}
+
+/* Landing page styles */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Prose styles for blog content */
+.prose h1 {
+  @apply text-3xl font-bold my-6 text-primary dark:text-white;
+}
+
+.prose h2 {
+  @apply text-2xl font-bold my-5 text-primary dark:text-white;
+}
+
+.prose h3 {
+  @apply text-xl font-bold my-4 text-primary dark:text-white;
+}
+
+.prose p {
+  @apply my-4 text-gray-800 dark:text-gray-200;
+}
+
+.prose ul,
+.prose ol {
+  @apply my-4 ml-6;
+}
+
+.prose li {
+  @apply my-1;
+}
+
+.prose code {
+  @apply bg-gray-100 dark:bg-gray-800 p-1 rounded text-pink-500 dark:text-pink-300;
+}
+
+.prose pre {
+  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-6 overflow-x-auto;
+}
+
