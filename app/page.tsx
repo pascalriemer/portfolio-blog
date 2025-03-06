@@ -66,7 +66,7 @@ export default function Home() {
 
               {/* Combined section for BlogPreview and ContactForm */}
               <section className="relative">
-                <CubeBackground scale={1.2} speed={0.5} />
+                <CubeBackground scale={1.2} speed={0.5} scrollRotate={true} />
                 <div className="relative z-10">
                   <div className="container mx-auto px-6">
                     {/* Blog Preview Content */}
