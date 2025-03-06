@@ -13,12 +13,12 @@ export default function Footer() {
             GitHub
           </a>
           <a
-            href=""
+            href="https://github.com/pascalriemer/portfolio-blog"
             target="_blank"
             rel="noopener noreferrer"
             className="text-quaternary dark:text-white hover:text-tertiary dark:hover:text-gray-300"
           >
-            LinkedIn
+            Source
           </a>
         </div>
       </div>
