@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useEffect, lazy, Suspense } from "react"
+import { useState, useEffect, Suspense } from "react"
+import dynamic from "next/dynamic"
 import Header from "./components/Header"
 import Hero from "./components/Hero"
 import Projects from "./components/Projects"
@@ -10,10 +11,10 @@ import { AnimatePresence, motion } from "framer-motion"
 import CubeBackground from "./components/CubeBackground"
 import ScrollAnimation from "./components/ScrollAnimation"
 
-// Lazy load components that aren't needed immediately
-const UnifiedLanding = lazy(() => import("./components/UnifiedLanding"))
-const ContactForm = lazy(() => import("./components/ContactForm"))
-const BlogPreview = lazy(() => import("./components/BlogPreview"))
+// Lazy load components with no SSR to ensure client-side only rendering
+const UnifiedLanding = dynamic(() => import("./components/UnifiedLanding"), { ssr: false })
+const ContactForm = dynamic(() => import("./components/ContactForm"), { ssr: false })
+const BlogPreview = dynamic(() => import("./components/BlogPreview"), { ssr: false })
 
 // Loading fallbacks
 const LoadingFallback = () => (

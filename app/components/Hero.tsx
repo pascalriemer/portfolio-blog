@@ -10,7 +10,10 @@ export default function Hero() {
         <div className="md:w-1/2">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Pascal Riemer</h1>
           <h2 className="text-2xl md:text-3xl mb-6">Welcome to my page!</h2>
-          <p className="text-lg mb-8">I'm passionate about tech, healthy living, travelling, photography and cooking. Based in Berlin & Bamberg, Germany.</p>
+          <p className="text-lg mb-8">
+            I'm passionate about tech, healthy living, travelling, photography and cooking. Based in Berlin & Bamberg,
+            Germany.
+          </p>
           <a
             href="#projects"
             className="bg-tertiary dark:bg-white text-primary dark:text-black px-6 py-3 rounded-full font-semibold hover:bg-secondary dark:hover:bg-gray-200 transition-colors"

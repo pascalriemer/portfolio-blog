@@ -1,11 +1,14 @@
+"use client"
+
 import { getBlogPostBySlug, getRelatedBlogPosts } from "@/app/lib/blog-data"
-import { notFound } from "next/navigation"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Calendar, Clock, Tag, ArrowLeft } from "lucide-react"
 import ScrollAnimation from "@/app/components/micro-interactions/ScrollAnimation"
-import type { Metadata } from "next"
+import { useEffect, useState } from "react"
 import Header from "@/app/components/Header"
+import type { BlogPost } from "@/app/lib/blog-data"
 
 interface BlogPostPageProps {
   params: {
@@ -13,30 +16,34 @@ interface BlogPostPageProps {
   }
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = getBlogPostBySlug(params.slug)
-
-  if (!post) {
-    return {
-      title: "Blog Post Not Found | Pascal Riemer",
-      description: "The blog post you are looking for could not be found.",
-    }
-  }
-
-  return {
-    title: `${post.title} | Pascal Riemer's Blog`,
-    description: post.excerpt,
-  }
-}
-
 export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getBlogPostBySlug(params.slug)
+  const [post, setPost] = useState<BlogPost | undefined>(undefined)
+  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([])
+  const router = useRouter()
+
+  useEffect(() => {
+    // Get post data on client side
+    const currentPost = getBlogPostBySlug(params.slug)
+
+    if (!currentPost) {
+      router.push("/404")
+      return
+    }
+
+    setPost(currentPost)
+    setRelatedPosts(getRelatedBlogPosts(currentPost.id, 2))
+
+    // Update document title
+    document.title = `${currentPost.title} | Pascal Riemer's Blog`
+  }, [params.slug, router])
 
   if (!post) {
-    notFound()
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-tertiary"></div>
+      </div>
+    )
   }
-
-  const relatedPosts = getRelatedBlogPosts(post.id, 2)
 
   // Function to convert markdown headings to HTML
   const formatContent = (content: string) => {
@@ -166,7 +173,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                     </div>
                   </div>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Hi, I'm Pascal Riemer, a tech-interested guy based in Berlin and Bamberg, Germany. Beyond my tech hobbies, I'm passionate about fitness, travelling, vegan cooking, and enjoying time with friends.
+                    Hi, I'm Pascal Riemer, a tech-interested guy based in Berlin and Bamberg, Germany. Beyond my tech
+                    hobbies, I'm passionate about fitness, travelling, vegan cooking, and enjoying time with friends.
                   </p>
                 </ScrollAnimation>
 

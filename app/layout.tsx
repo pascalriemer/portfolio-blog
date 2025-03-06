@@ -8,9 +8,8 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Pascal Riemer - Personal Website",
-  description:
-    "Personal website of Pascal Riemer",
-    generator: 'v0.dev'
+  description: "Personal website of Pascal Riemer",
+  generator: "v0.dev",
 }
 
 export const viewport: Viewport = {
@@ -35,6 +34,8 @@ export default function RootLayout({
     </html>
   )
 }
+
+import "./globals.css"
 
 
 

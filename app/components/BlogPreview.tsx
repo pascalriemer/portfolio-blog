@@ -1,12 +1,21 @@
+"use client"
+
 import { getRecentBlogPosts } from "@/app/lib/blog-data"
 import Link from "next/link"
 import Image from "next/image"
 import ScrollAnimation from "./micro-interactions/ScrollAnimation"
 import Button from "./micro-interactions/Button"
 import { ArrowRight } from "lucide-react"
+import { useEffect, useState } from "react"
+import type { BlogPost } from "@/app/lib/blog-data"
 
 export default function BlogPreview() {
-  const recentPosts = getRecentBlogPosts(3)
+  const [recentPosts, setRecentPosts] = useState<BlogPost[]>([])
+
+  useEffect(() => {
+    // Get recent posts on client side
+    setRecentPosts(getRecentBlogPosts(3))
+  }, [])
 
   return (
     <>

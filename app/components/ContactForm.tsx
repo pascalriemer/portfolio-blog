@@ -88,68 +88,68 @@ export default function ContactForm() {
       setIsSubmitting(true)
 
       try {
-        const response = await fetch('/api/send-email', {
-          method: 'POST',
+        const response = await fetch("/api/send-email", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
-        });
+        })
 
-        const data = await response.json();
+        const data = await response.json()
 
         if (response.ok) {
-          setIsSubmitted(true);
+          setIsSubmitted(true)
           setFeedback({
             type: "success",
             message: "Your message has been sent successfully!",
-          });
+          })
 
           setFormData({
             name: "",
             email: "",
             subject: "",
             message: "",
-          });
+          })
 
           // Reset success message after 5 seconds
           setTimeout(() => {
-            setIsSubmitted(false);
-          }, 5000);
+            setIsSubmitted(false)
+          }, 5000)
         } else {
-          throw new Error(data.error || 'Failed to send message');
+          throw new Error(data.error || "Failed to send message")
         }
       } catch (error) {
         setFeedback({
           type: "error",
           message: (error as Error).message || "Failed to send message. Please try again later.",
-        });
-        
+        })
+
         // Clear error message after 5 seconds
         setTimeout(() => {
           setFeedback({
             type: null,
             message: null,
-          });
-        }, 5000);
+          })
+        }, 5000)
       } finally {
-        setIsSubmitting(false);
+        setIsSubmitting(false)
       }
     } else {
       setFeedback({
         type: "error",
         message: "Please fix the errors in the form",
-      });
+      })
 
       // Clear error message after 5 seconds
       setTimeout(() => {
         setFeedback({
           type: null,
           message: null,
-        });
-      }, 5000);
+        })
+      }, 5000)
     }
-  };
+  }
 
   return (
     <div className="max-w-md mx-auto">

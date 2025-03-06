@@ -18,16 +18,18 @@ export default function About() {
           </div>
           <div className="md:w-2/3">
             <p className="mb-4">
-              Hi, I'm Pascal Riemer, a tech-interested guy based in Berlin and Bamberg, Germany who enjoys tinkering with self-hosting solutions and open source projects in his free time.
+              Hi, I'm Pascal Riemer, a tech-interested guy based in Berlin and Bamberg, Germany who enjoys tinkering
+              with self-hosting solutions and open source projects in his free time.
             </p>
             <p className="mb-4">
-              As a hobby, I like to explore innovative (preferrably open source) technologies, especially setting up self-hosted applications at home. I find it fun to learn about system administration, networking, and dabble with code while maintaining my personal digital services.
+              As a hobby, I like to explore innovative (preferrably open source) technologies, especially setting up
+              self-hosted applications at home. I find it fun to learn about system administration, networking, and
+              dabble with code while maintaining my personal digital services.
             </p>
-            <p className="mb-4">
-              Beyond tech, I'm passionate about healthy living and Hertha BSC.
-            </p>
+            <p className="mb-4">Beyond tech, I'm passionate about healthy living and Hertha BSC.</p>
             <p>
-              When I'm not engaged with my various hobbies, you'll find me hanging out with friends and family, whether that's sharing a meal, enjoying outdoor activities, or just catching up over coffee.
+              When I'm not engaged with my various hobbies, you'll find me hanging out with friends and family, whether
+              that's sharing a meal, enjoying outdoor activities, or just catching up over coffee.
             </p>
           </div>
         </div>

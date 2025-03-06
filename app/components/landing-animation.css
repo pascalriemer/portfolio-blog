@@ -55,10 +55,10 @@ html {
 /* Common Box styles */
 .box {
   position: absolute;
-  width: var(--size);
-  height: var(--size);
-  margin-top: calc(var(--size) * -0.5);
-  margin-left: calc(var(--size) * -0.5);
+  width: calc(var(--size) * var(--cube-size-factor, 1));
+  height: calc(var(--size) * var(--cube-size-factor, 1));
+  margin-top: calc(var(--size) * var(--cube-size-factor, 1) * -0.5);
+  margin-left: calc(var(--size) * var(--cube-size-factor, 1) * -0.5);
   transform-style: preserve-3d;
   animation: anim linear 24s infinite, hover-out linear 0s forwards;
   transform: translateZ(var(--z-offset)) rotateX(calc((var(--time) + var(--time-offset)) * var(--x-speed)))
@@ -80,8 +80,8 @@ html {
   position: absolute;
   top: 0;
   left: 0;
-  width: var(--size);
-  height: var(--size);
+  width: calc(var(--size) * var(--cube-size-factor, 1));
+  height: calc(var(--size) * var(--cube-size-factor, 1));
   box-sizing: border-box;
   background: linear-gradient(to right, white 3%, black 3% 97%, white 97% 100%);
   background-size: var(--bg-size) var(--bg-size);
@@ -100,22 +100,22 @@ html {
 }
 
 .box .top {
-  transform: translateY(calc(var(--size) * -0.5)) rotateX(90deg);
+  transform: translateY(calc(var(--size) * var(--cube-size-factor, 1) * -0.5)) rotateX(90deg);
 }
 .box .bottom {
-  transform: translateY(calc(var(--size) * 0.5)) rotateX(-90deg);
+  transform: translateY(calc(var(--size) * var(--cube-size-factor, 1) * 0.5)) rotateX(-90deg);
 }
 .box .left {
-  transform: translateX(calc(var(--size) * -0.5)) rotateY(-90deg);
+  transform: translateX(calc(var(--size) * var(--cube-size-factor, 1) * -0.5)) rotateY(-90deg);
 }
 .box .right {
-  transform: translateX(calc(var(--size) * 0.5)) rotateY(90deg);
+  transform: translateX(calc(var(--size) * var(--cube-size-factor, 1) * 0.5)) rotateY(90deg);
 }
 .box .front {
-  transform: translateZ(calc(var(--size) * 0.5)) rotateY(0deg);
+  transform: translateZ(calc(var(--size) * var(--cube-size-factor, 1) * 0.5)) rotateY(0deg);
 }
 .box .rear {
-  transform: translateZ(calc(var(--size) * -0.5)) rotateY(180deg);
+  transform: translateZ(calc(var(--size) * var(--cube-size-factor, 1) * -0.5)) rotateY(180deg);
 }
 
 /* Place boxes in 3D space */
@@ -175,5 +175,50 @@ html {
 .cube-background .wrapper {
   position: absolute;
   pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .box-0 {
+    --size: 500px;
+    --bg-size: 50px;
+  }
+
+  .box-1 {
+    --size: 450px;
+    --bg-size: 45px;
+  }
+
+  .box-2 {
+    --size: 400px;
+    --bg-size: 40px;
+  }
+
+  .box-3 {
+    --size: 350px;
+    --bg-size: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .box-0 {
+    --size: 400px;
+    --bg-size: 40px;
+  }
+
+  .box-1 {
+    --size: 350px;
+    --bg-size: 35px;
+  }
+
+  .box-2 {
+    --size: 300px;
+    --bg-size: 30px;
+  }
+
+  .box-3 {
+    --size: 250px;
+    --bg-size: 25px;
+  }
 }
 

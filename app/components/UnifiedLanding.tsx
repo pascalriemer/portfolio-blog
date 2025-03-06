@@ -448,6 +448,7 @@ function UnifiedLanding({ onEnter }: UnifiedLandingProps) {
         if (!vfxSuccess) {
           console.log("VFX-JS failed, trying Three.js")
           setRenderMode("three")
+          setRenderMode("three")
           return
         }
       }

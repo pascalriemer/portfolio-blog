@@ -1,18 +1,24 @@
+"use client"
+
 import { getAllBlogPosts } from "@/app/lib/blog-data"
 import Link from "next/link"
 import Image from "next/image"
 import ScrollAnimation from "@/app/components/micro-interactions/ScrollAnimation"
 import { Calendar, Clock } from "lucide-react"
 import Header from "@/app/components/Header"
-import type { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Blog | Pascal Riemer - Tech Hobbyist",
-  description: "Read articles about my tech hobbies including self-hosting experiments, open source projects, and other tech topics by Pascal Riemer.",
-}
+import { useEffect, useState } from "react"
+import type { BlogPost } from "@/app/lib/blog-data"
 
 export default function BlogPage() {
-  const posts = getAllBlogPosts()
+  const [posts, setPosts] = useState<BlogPost[]>([])
+
+  useEffect(() => {
+    // Get blog posts on client side
+    setPosts(getAllBlogPosts())
+
+    // Update document title
+    document.title = "Blog | Pascal Riemer - Tech Hobbyist"
+  }, [])
 
   return (
     <>
